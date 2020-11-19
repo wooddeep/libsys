@@ -14,22 +14,11 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type UserController struct {
+type BookController struct {
 	beego.Controller
 }
 
-// beego orm 的使用：https://www.cnblogs.com/yangmingxianshen/p/10122427.html
-// beego orm 高级使用：https://blog.csdn.net/yang731227/article/details/82503059
-
-// 查询所有：_, qs := o.QueryTable("user").All(&users)
-// 查询单个：_, qs := o.QueryTable("Student").Filter("Id", 1).One(&student)
-// 插入对象：id, err := o.Insert(user)
-// 删除对象：n, err := o.Delete(&user)
-// 更新对象：n, err:=qs.Filter("stu_id",5).Update(orm.Params{"hobby": "学习"})
-
-// 获取url中的参数 var pageIndex = this.Ctx.Input.Param(":pi")
-
-func (this *UserController) UserLst() {
+func (this *BookController) BookLst() {
 	pageIndex, err := strconv.Atoi(this.Ctx.Input.Param(":pi"))
 	if err == nil {
 		fmt.Printf("%T, %v", pageIndex, pageIndex)
@@ -52,32 +41,26 @@ func (this *UserController) UserLst() {
 
 	o := orm.NewOrm()
 
-	var users []models.User //查询的结果是集合的话，这里需要加上[]
-	qs := o.QueryTable("user")
+	var books []models.Book //查询的结果是集合的话，这里需要加上[]
+	qs := o.QueryTable("book")
 
-	_, err = qs.Offset(pageIndex * pageSize).Limit(pageSize).All(&users)
+	_, err = qs.Offset(pageIndex * pageSize).Limit(pageSize).All(&books)
 	if err == nil {
-		// for _, user := range users {
-		// 	fmt.Println(user)
-		// }
-		//this.Ctx.WriteString(tools.Response(0, "success", users))
-		this.Data["json"] = map[string]interface{}{"data": users, "msg": "success", "code": 0} // 设置返回值
+		this.Data["json"] = map[string]interface{}{"data": books, "msg": "success", "code": 0} // 设置返回值
 		this.ServeJSON()
 	} else {
 		logs.Info(err)
-		//this.Ctx.WriteString(tools.Response(3, err.Error(), nil))
 		this.Data["json"] = map[string]interface{}{"data": []byte{}, "msg": err.Error(), "code": 1} // 设置返回值
 		this.ServeJSON()
 	}
 
 }
 
-// -d {"username": "lihan", "name": "李翰"}
-func (this *UserController) UserAdd() {
+func (this *BookController) BookAdd() {
 	data := this.Ctx.Input.RequestBody
-	//json数据封装到user对象中
-	var user models.User
-	err := json.Unmarshal(data, &user)
+	//json数据封装到book对象中
+	var book models.Book
+	err := json.Unmarshal(data, &book)
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{"data": string(data), "msg": "输入数据错误", "code": 1} // 设置返回值
 		this.ServeJSON()
@@ -85,22 +68,22 @@ func (this *UserController) UserAdd() {
 	}
 
 	o := orm.NewOrm()
-	id, err := o.Insert(&user)
+	id, err := o.Insert(&book)
 	if err == nil {
 		var data = map[string]interface{}{"id": id}
 		this.Data["json"] = map[string]interface{}{"data": data, "msg": "success", "code": 0} // 设置返回值
 		this.ServeJSON()
 	} else {
-		this.Data["json"] = map[string]interface{}{"data": user, "msg": err.Error(), "code": 2} // 设置返回值
+		this.Data["json"] = map[string]interface{}{"data": book, "msg": err.Error(), "code": 2} // 设置返回值
 		this.ServeJSON()
 	}
 }
 
-func (this *UserController) UserDel() {
+func (this *BookController) BookDel() {
 	data := this.Ctx.Input.RequestBody
-	//json数据封装到user对象中
-	var user models.User
-	err := json.Unmarshal(data, &user)
+	//json数据封装到book对象中
+	var book models.Book
+	err := json.Unmarshal(data, &book)
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{"data": string(data), "msg": "输入数据错误", "code": 1} // 设置返回值
 		this.ServeJSON()
@@ -108,22 +91,22 @@ func (this *UserController) UserDel() {
 	}
 
 	o := orm.NewOrm()
-	n, err := o.Delete(&user)
+	n, err := o.Delete(&book)
 	if err == nil {
 		var data = map[string]interface{}{"num": n}
 		this.Data["json"] = map[string]interface{}{"data": data, "msg": "success", "code": 0} // 设置返回值
 		this.ServeJSON()
 	} else {
-		this.Data["json"] = map[string]interface{}{"data": user, "msg": err.Error(), "code": 2} // 设置返回值
+		this.Data["json"] = map[string]interface{}{"data": book, "msg": err.Error(), "code": 2} // 设置返回值
 		this.ServeJSON()
 	}
 }
 
-func (this *UserController) UserMod() {
+func (this *BookController) BookMod() {
 	data := this.Ctx.Input.RequestBody
-	//json数据封装到user对象中
-	var user models.User
-	err := json.Unmarshal(data, &user)
+	//json数据封装到book对象中
+	var book models.Book
+	err := json.Unmarshal(data, &book)
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{"data": string(data), "msg": "输入数据错误", "code": 1} // 设置返回值
 		this.ServeJSON()
@@ -140,20 +123,20 @@ func (this *UserController) UserMod() {
 	}
 	fmt.Println(mapResult)
 
-	n, err := o.QueryTable("user").Filter("id", user.ID).Update(mapResult)
+	n, err := o.QueryTable("book").Filter("id", book.ID).Update(mapResult)
 	if err == nil {
 		var data = map[string]interface{}{"num": n}
 		this.Data["json"] = map[string]interface{}{"data": data, "msg": "success", "code": 0} // 设置返回值
 		this.ServeJSON()
 	} else {
-		this.Data["json"] = map[string]interface{}{"data": user, "msg": err.Error(), "code": 2} // 设置返回值
+		this.Data["json"] = map[string]interface{}{"data": book, "msg": err.Error(), "code": 2} // 设置返回值
 		this.ServeJSON()
 	}
 }
 
 func init() {
-	beego.Router("/user/lst/:pi/:ps", &UserController{}, "get:UserLst")
-	beego.Router("/user/add", &UserController{}, "post:UserAdd")
-	beego.Router("/user/del", &UserController{}, "delete:UserDel")
-	beego.Router("/user/mod", &UserController{}, "put:UserMod")
+	beego.Router("/book/lst/:pi/:ps", &BookController{}, "get:BookLst")
+	beego.Router("/book/add", &BookController{}, "post:BookAdd")
+	beego.Router("/book/del", &BookController{}, "delete:BookDel")
+	beego.Router("/book/mod", &BookController{}, "put:BookMod")
 }

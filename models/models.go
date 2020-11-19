@@ -21,22 +21,22 @@ import (
 
 // Book -
 type Book struct {
-	ID   int    `orm:"column(id)"`
-	Name string `orm:"column(name)"`
-	Type int    `orm:"column(type)"`
-	Isbn string `orm:"column(isbn)"`
-	Desc string `orm:"column(desc)"`
-	Lang string `orm:"column(lang)"`
-	Item string `orm:"column(item)"`
+	ID   int    `orm:"column(id)" json:"id"`
+	Name string `orm:"column(name)" json:"name"`
+	Type int    `orm:"column(type)" json:"type"`
+	Isbn string `orm:"column(isbn)" json:"isbn"`
+	Desc string `orm:"column(desc)" json:"desc"`
+	Lang string `orm:"column(lang)" json:"lang"`
+	Item string `orm:"column(item)" json:"item"`
 }
 
 // BookShelf -
 type BookShelf struct {
-	ID        int `orm:"column(id)"`
-	UserId    int `orm:"column(user_id)"`
-	BookId    int `orm:"column(book_id)"`
-	BookState int `orm:"column(isbn)"`
-	Progress  int `orm:"column(desc)"`
+	ID        int `orm:"column(id)" json:"id"`
+	UserId    int `orm:"column(user_id)" json:"user_id"`
+	BookId    int `orm:"column(book_id)" json:"book_id"`
+	BookState int `orm:"column(isbn)" json:"isbn"`
+	Progress  int `orm:"column(desc)" json:"desc"`
 }
 
 func (bs *BookShelf) TableName() string {
@@ -45,45 +45,45 @@ func (bs *BookShelf) TableName() string {
 
 // Circle -
 type Circle struct {
-	ID        int    `orm:"column(id)"`
-	CreatorId int    `orm:"column(creator_id)"`
-	title     string `orm:"column(title)"`
+	ID        int    `orm:"column(id)" json:"id"`
+	CreatorId int    `orm:"column(creator_id)" json:"creator_id"`
+	title     string `orm:"column(title)" json:"title"`
 }
 
 // Discuss -
 type Discuss struct {
-	ID       int    `orm:"column(id)"`
-	CircleId int    `orm:"column(circle_id)"`
-	time     string `orm:"column(time)"`
-	FromId   int    `orm:"column(from_id)"`
-	ToId     int    `orm:"column(to_id)"`
-	Content  string `orm:"column(content)"`
+	ID       int    `orm:"column(id)" json:"id"`
+	CircleId int    `orm:"column(circle_id)" json:"circle_id"`
+	time     string `orm:"column(time)" json:"time"`
+	FromId   int    `orm:"column(from_id)" json:"from_id"`
+	ToId     int    `orm:"column(to_id)" json:"to_id"`
+	Content  string `orm:"column(content)" json:"content"`
 }
 
 // Punch -
 type Punch struct {
-	ID        int    `orm:"column(id)"`
-	UserId    int    `orm:"column(user_id)"`
-	BookId    int    `orm:"column(book_id)"`
-	TimePoint string `orm:"column(timepoint)"`
-	ReadTime  int    `orm:"column(treadtime)"`
+	ID        int    `orm:"column(id)" json:"id"`
+	UserId    int    `orm:"column(user_id)" json:"user_id"`
+	BookId    int    `orm:"column(book_id)" json:"book_id"`
+	TimePoint string `orm:"column(timepoint)" json:"timepoint"`
+	ReadTime  int    `orm:"column(treadtime)" json:"treadtime"`
 }
 
 // Review -
 type Review struct {
-	ID       int    `orm:"column(id)"`
-	UserId   int    `orm:"column(user_id)"`
-	CircleId int    `orm:"column(circle_id)"`
-	Content  string `orm:"column(content)"`
-	time     string `orm:"column(time)"`
+	ID       int    `orm:"column(id)" json:"id"`
+	UserId   int    `orm:"column(user_id)" json:"user_id"`
+	CircleId int    `orm:"column(circle_id)" json:"circle_id"`
+	Content  string `orm:"column(content)" json:"content"`
+	time     string `orm:"column(time)" json:"time"`
 }
 
 // Experience -
 type Experience struct {
-	ID      int    `orm:"column(id)"`
-	UserId  int    `orm:"column(user_id)"`
-	BookId  int    `orm:"column(book_id)"`
-	Content string `orm:"column(content)"`
+	ID      int    `orm:"column(id)" json:"id"`
+	UserId  int    `orm:"column(user_id)" json:"user_id"`
+	BookId  int    `orm:"column(book_id)" json:"book_id"`
+	Content string `orm:"column(content)" json:"content"`
 }
 
 // User -
@@ -94,16 +94,8 @@ type User struct {
 	Password  string `orm:"column(password)" json:"password"`
 	Type      string `orm:"column(type)" json:"type"`
 	CircleIds string `orm:"column(circle_ids)" json:"circle_ids"`
+	Name      string `orm:"column(name)" json:"name"`
 }
-
-// type User struct {
-// 	ID        int    `orm:"column(id)"`
-// 	Number    string `orm:"column(number)"`
-// 	UserName  string `orm:"column(username)"`
-// 	Password  string `orm:"column(password)"`
-// 	Type      string `orm:"column(type)"`
-// 	CircleIds string `orm:"column(circle_ids)"`
-// }
 
 func init() {
 	// need to register models in init

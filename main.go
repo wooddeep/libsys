@@ -14,5 +14,6 @@ import (
 func main() {
 	fmt.Println("hello world!")
 	//beego.AutoRender = false
+	beego.BConfig.CopyRequestBody = true
 	beego.Run()
 }
