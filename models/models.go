@@ -19,6 +19,9 @@ import (
 //	}
 //	_ = id
 
+type Base struct {
+}
+
 // Book -
 type Book struct {
 	ID   int    `orm:"column(id)" json:"id"`
@@ -32,6 +35,7 @@ type Book struct {
 
 // BookShelf -
 type BookShelf struct {
+	Base
 	ID        int `orm:"column(id)" json:"id"`
 	UserId    int `orm:"column(user_id)" json:"user_id"`
 	BookId    int `orm:"column(book_id)" json:"book_id"`
