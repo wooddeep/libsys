@@ -123,7 +123,7 @@ func (this *BookShelfController) BookShelfMod() {
 	}
 	fmt.Println(mapResult)
 
-	n, err := o.QueryTable("shelf").Filter("id", shelf.ID).Update(mapResult)
+	n, err := o.QueryTable("book_shelf").Filter("id", shelf.ID).Update(mapResult)
 	if err == nil {
 		var data = map[string]interface{}{"num": n}
 		this.Data["json"] = map[string]interface{}{"data": data, "msg": "success", "code": 0} // 设置返回值
