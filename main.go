@@ -13,6 +13,6 @@ import (
 
 func main() {
 	fmt.Println("hello world!")
-
+	//beego.AutoRender = false
 	beego.Run()
 }

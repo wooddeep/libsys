@@ -88,13 +88,22 @@ type Experience struct {
 
 // User -
 type User struct {
-	ID        int    `orm:"column(id)"`
-	Number    string `orm:"column(number)"`
-	UserName  string `orm:"column(username)"`
-	Password  string `orm:"column(password)"`
-	Type      string `orm:"column(type)"`
-	CircleIds string `orm:"column(circle_ids)"`
+	ID        int    `orm:"column(id)" json:"id"`
+	Number    string `orm:"column(number)" json:"number"`
+	UserName  string `orm:"column(username)" json:"username"`
+	Password  string `orm:"column(password)" json:"password"`
+	Type      string `orm:"column(type)" json:"type"`
+	CircleIds string `orm:"column(circle_ids)" json:"circle_ids"`
 }
+
+// type User struct {
+// 	ID        int    `orm:"column(id)"`
+// 	Number    string `orm:"column(number)"`
+// 	UserName  string `orm:"column(username)"`
+// 	Password  string `orm:"column(password)"`
+// 	Type      string `orm:"column(type)"`
+// 	CircleIds string `orm:"column(circle_ids)"`
+// }
 
 func init() {
 	// need to register models in init
