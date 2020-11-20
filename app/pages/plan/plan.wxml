@@ -1,0 +1,67 @@
+<!-- 搜索框 -->
+<view class="weui-search-bar">
+	<view class="weui-search-bar__form">
+		<!-- 搜索框 -->
+		<view class="weui-search-bar__box">
+			<icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+			<input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容" />
+		</view>
+	</view>
+	<!-- 搜索按钮,调用搜索查询方法 -->
+	<view class="weui-search-bar__cancel-btn" bindtap='方法名a'>搜索</view>
+</view>
+
+<view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">已读</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">未读</view>
+</view>
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+    <swiper-item>
+      <!-- 滚动区域 -->
+      <view class="section">
+        <view class="section__title">vertical scroll竖直方向</view>
+        <scroll-view scroll-y="true" style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <view id="green" class="scroll-view-item bc_green"></view>
+          <view id="red"  class="scroll-view-item bc_red"></view>
+          <view id="yellow" class="scroll-view-item bc_yellow"></view>
+          <view id="blue" class="scroll-view-item bc_blue"></view>
+        </scroll-view>
+        <view class="btn-area">
+          <button size="mini" bindtap="tapMove">click me to scroll</button>
+        </view>
+      </view>
+
+    </swiper-item>
+    <swiper-item>
+        <view>未读</view>
+    </swiper-item>
+</swiper>
+
+
+
+
+<view class="container">
+	<!--
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  -->
+
+	<!--
+  <view>
+  <text>{{motto}}</text>
+  </view>
+  -->
+
+	<!--
+  <view class="usermotto">
+    <button bindtap="netTest"> 网络请求 </button>
+  </view>
+  -->
+
+</view>
