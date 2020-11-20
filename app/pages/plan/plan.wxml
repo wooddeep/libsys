@@ -16,12 +16,13 @@
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">未读</view>
 </view>
 
-<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
-    <swiper-item>
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 80}}px" bindchange="bindChange">
+    <swiper-item class="back">
       <!-- 滚动区域 -->
+      <!-- https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html -->
       <view class="section">
-        <view class="section__title">vertical scroll竖直方向</view>
-        <scroll-view scroll-y="true" style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+
+        <scroll-view scroll-y="true" style="height: {{winHeight - 3}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <view id="green" class="scroll-view-item bc_green"></view>
           <view id="red"  class="scroll-view-item bc_red"></view>
           <view id="yellow" class="scroll-view-item bc_yellow"></view>
@@ -31,7 +32,6 @@
           <button size="mini" bindtap="tapMove">click me to scroll</button>
         </view>
       </view>
-
     </swiper-item>
     <swiper-item>
         <view>未读</view>

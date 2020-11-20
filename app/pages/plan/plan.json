@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "//": "禁止页面滚动",
+  "disableScroll": true
+
 }
