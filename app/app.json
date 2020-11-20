@@ -1,0 +1,29 @@
+
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "images/crane_area_stop_distance.png",
+      "selectedIconPath": "images/crane_area_stop_distance.png",
+      "text": "text"
+    },{
+      "pagePath": "pages/logs/logs",
+      "iconPath": "images/add_logo.png",
+      "selectedIconPath": "images/add_logo.png",
+      "text": "text"
+    }]
+  },
+  
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
