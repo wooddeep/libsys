@@ -18,7 +18,22 @@ Page({
     currentTab: 0,
     toView: 'green',
     scrollTop: 100,
-    scrollLeft: 0
+    scrollLeft: 0,
+    datas: [
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",            
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png"
+    ]
   },
 
   a: function () {

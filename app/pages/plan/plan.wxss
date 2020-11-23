@@ -109,6 +109,24 @@
 	background:blue;
 }
 
-.back{
-	background:yellow;
+/* grid布局 */
+.parent {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.child {
+  box-sizing: border-box;
+  background-color: white;
+  flex: 0 0 44%;
+  height: 100px;
+  border: 1px solid gray;
+  margin-top: 4%;
+  margin-left: 2%;
+  margin-right: 2%;
 }

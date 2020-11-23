@@ -17,28 +17,31 @@
 </view>
 
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 80}}px" bindchange="bindChange">
-    <swiper-item class="back">
+    <swiper-item>
       <!-- 滚动区域 -->
       <!-- https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html -->
       <view class="section">
 
-        <scroll-view scroll-y="true" style="height: {{winHeight - 3}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-          <view id="green" class="scroll-view-item bc_green"></view>
-          <view id="red"  class="scroll-view-item bc_red"></view>
-          <view id="yellow" class="scroll-view-item bc_yellow"></view>
-          <view id="blue" class="scroll-view-item bc_blue"></view>
+        <scroll-view scroll-y="true" style="height: {{winHeight - 80}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+
+        <view class="parent">
+            <block class="parent" wx:for="{{datas}}"> <!--block 是循环打印image-->
+                <image class="child" src="{{item}}"></image>
+            </block>
+        </view>
+
         </scroll-view>
+        <!--
         <view class="btn-area">
           <button size="mini" bindtap="tapMove">click me to scroll</button>
         </view>
+        -->
       </view>
     </swiper-item>
     <swiper-item>
         <view>未读</view>
     </swiper-item>
 </swiper>
-
-
 
 
 <view class="container">
