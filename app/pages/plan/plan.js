@@ -31,7 +31,12 @@ Page({
       "https://gitee.com/index/ent_poster/banner_5_1_a.png",
       "https://gitee.com/index/ent_poster/banner_5_1_a.png",
       "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",            
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",         
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
+      "https://gitee.com/index/ent_poster/banner_5_1_a.png",       
       "https://gitee.com/index/ent_poster/banner_5_1_a.png"
     ]
   },

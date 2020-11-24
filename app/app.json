@@ -14,19 +14,19 @@
   "tabBar": {
     "list": [{
       "pagePath": "pages/plan/plan",
-      "iconPath": "images/add_logo.png",
-      "selectedIconPath": "images/add_logo.png",
-      "text": "??"
+      "iconPath": "images/shelf_gray.png",
+      "selectedIconPath": "images/shelf.png",
+      "text": "书架"
     },{
       "pagePath": "pages/index/index",
-      "iconPath": "images/crane_area_stop_distance.png",
-      "selectedIconPath": "images/crane_area_stop_distance.png",
-      "text": "text"
+      "iconPath": "images/circle_gray.png",
+      "selectedIconPath": "images/circle.png",
+      "text": "圈子"
     },{
       "pagePath": "pages/logs/logs",
-      "iconPath": "images/add_logo.png",
-      "selectedIconPath": "images/add_logo.png",
-      "text": "text"
+      "iconPath": "images/punch_gray.png",
+      "selectedIconPath": "images/punch.png",
+      "text": "打卡"
     }]
   },
   
