@@ -22,15 +22,15 @@
       <!-- https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html -->
       <view class="section">
         <scroll-view scroll-y="true" style="height: {{winHeight - 80}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <view class="parent">
-            <!--block 是循环打印image--> <!-- {{index < datas.length}} -->
-            <block class="parent" wx:for="{{datas}}" wx:if="{{index < 2}}"> 
-                <image class="child-top" src="{{item}}"></image>
-            </block>
-            <block class="parent" wx:for="{{datas}}" wx:if="{{index >= 2}}"> 
-                <image class="child" src="{{item}}"></image>
-            </block>
-        </view>
+          <view class="parent">
+              <!--block 是循环打印image--> <!-- {{index < datas.length}} -->
+              <block class="book_parent" wx:for="{{datas}}" wx:if="{{index < 2}}"> 
+                  <view class="book-top">{{item}}</view>
+              </block>
+              <block class="book_parent" wx:for="{{datas}}" wx:if="{{index >= 2}}"> 
+                  <text class="book">{{item}}</text>
+              </block>
+          </view>
         </scroll-view>
         <!--
         <view class="btn-area">
@@ -42,14 +42,15 @@
     <swiper-item>
       <view class="section">
         <scroll-view scroll-y="true" style="height: {{winHeight - 80}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <view class="parent">
-            <block class="parent" wx:for="{{datas}}" wx:if="{{index < 2}}"> 
-                <image class="child-top" src="{{item}}"></image>
-            </block>
-            <block class="parent" wx:for="{{datas}}" wx:if="{{index >= 2}}"> 
-                <image class="child" src="{{item}}"></image>
-            </block>
-        </view>
+          <view class="parent">
+              <!--block 是循环打印image--> <!-- {{index < datas.length}} -->
+              <block class="book_parent" wx:for="{{datas}}" wx:if="{{index < 2}}"> 
+                  <view class="book-top">{{item}}</view>
+              </block>
+              <block class="book_parent" wx:for="{{datas}}" wx:if="{{index >= 2}}"> 
+                  <text class="book">{{item}}</text>
+              </block>
+          </view>
         </scroll-view>
       </view>
     </swiper-item>

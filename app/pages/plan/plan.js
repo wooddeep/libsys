@@ -1,6 +1,3 @@
-//index.js
-//获取应用实例
-
 // tab页 demo: https://www.jianshu.com/p/1a3405f77654
 
 const app = getApp()
@@ -19,26 +16,7 @@ Page({
     toView: 'green',
     scrollTop: 100,
     scrollLeft: 0,
-    datas: [
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",         
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png",       
-      "https://gitee.com/index/ent_poster/banner_5_1_a.png"
-    ]
+    datas: []
   },
 
   a: function () {
@@ -46,6 +24,30 @@ Page({
   },
 
   onLoad: function() {
+    // 协程异步同步化
+    (async () => {
+      const p = await new Promise((resolve, reject) => {
+          //setTimeout(() => resolve("hello async/await"), 1000);
+          wx.request({
+            url: 'http://127.0.0.1:8080/bookshelf/lst/16', // 14 是user id, 需要替换成实际的用户id
+            method: "GET",
+            success: function(r) {
+              resolve(r)
+            },
+            fail: function(r) {
+              console.log("error!")
+              reject("error!")
+            }
+          })
+      });
+ 
+      var books = p.data.data
+      books = books.map(obj => obj.name)
+      
+      this.setData({
+        "datas": books // "https://gitee.com/index/ent_poster/banner_5_1_a.png"
+      })
+    })();
 
     var that = this;
 

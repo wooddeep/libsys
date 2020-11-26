@@ -151,6 +151,8 @@ func (this *UserController) UserMod() {
 	}
 }
 
+// select book_id, book_state, b.name from book_shelf a left join book b on a.book_id = b.id where a.user_id = 16;
+
 func init() {
 	beego.Router("/user/lst/:pi/:ps", &UserController{}, "get:UserLst")
 	beego.Router("/user/add", &UserController{}, "post:UserAdd")

@@ -39,8 +39,8 @@ type BookShelf struct {
 	ID        int `orm:"column(id)" json:"id"`
 	UserId    int `orm:"column(user_id)" json:"user_id"`
 	BookId    int `orm:"column(book_id)" json:"book_id"`
-	BookState int `orm:"column(isbn)" json:"isbn"`
-	Progress  int `orm:"column(desc)" json:"desc"`
+	BookState int `orm:"column(book_state)" json:"book_state"`
+	Progress  int `orm:"column(progress)" json:"progress"`
 }
 
 func (bs *BookShelf) TableName() string {

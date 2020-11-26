@@ -134,8 +134,39 @@ func (this *BookShelfController) BookShelfMod() {
 	}
 }
 
+type BookinShelf struct {
+	BookId    int    `orm:"column(book_id)" json:"book_id"`
+	BookState int    `orm:"column(book_state)" json:"book_state"`
+	Name      string `orm:"column(name)" json:"name"`
+}
+
+func (this *BookShelfController) BookShelfPerUser() {
+
+	uid, err := strconv.Atoi(this.Ctx.Input.Param(":uid"))
+	if err != nil {
+		this.Data["json"] = map[string]interface{}{"data": []byte{}, "msg": err.Error(), "code": 1} // 设置返回值
+		this.ServeJSON()
+		return
+	}
+
+	var books []*BookinShelf
+	orm := orm.NewOrm()
+	_, err = orm.Raw("select book_id, book_state, b.name from book_shelf a left join book b on a.book_id = b.id where a.user_id = ?;", uid).QueryRows(&books)
+	if err == nil {
+		this.Data["json"] = map[string]interface{}{"data": books, "msg": "success", "code": 0} // 设置返回值
+		this.ServeJSON()
+
+	} else {
+		this.Data["json"] = map[string]interface{}{"data": books, "msg": err.Error(), "code": 2} // 设置返回值
+		this.ServeJSON()
+	}
+
+}
+
 func init() {
 	beego.Router("/bookshelf/lst/:pi/:ps", &BookShelfController{}, "get:BookShelfLst")
+	beego.Router("/bookshelf/lst/:uid", &BookShelfController{}, "get:BookShelfPerUser") // 根据用户id查询书架上的书
+
 	beego.Router("/bookshelf/add", &BookShelfController{}, "post:BookShelfAdd")
 	beego.Router("/bookshelf/del", &BookShelfController{}, "delete:BookShelfDel")
 	beego.Router("/bookshelf/mod", &BookShelfController{}, "put:BookShelfMod")
